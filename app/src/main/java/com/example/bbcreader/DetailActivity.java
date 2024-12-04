@@ -9,18 +9,26 @@ import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class DetailActivity extends AppCompatActivity {
+public class DetailActivity extends BaseActivity {
+
+    private DatabaseHelper dbHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail);
+        //setContentView(R.layout.activity_detail);
+        getLayoutInflater().inflate(R.layout.activity_detail, findViewById(R.id.content_frame));
+
+        dbHelper = new DatabaseHelper(this);
 
         TextView title = findViewById(R.id.title);
         TextView description = findViewById(R.id.description);
         TextView pubDate = findViewById(R.id.pubDate);
         TextView linkTextView = findViewById(R.id.linkTextView);
         Button linkButton = findViewById(R.id.linkButton);
+        Button favoriteButton = findViewById(R.id.favoriteButton);
 
         Intent intent = getIntent();
         title.setText(intent.getStringExtra("title"));
@@ -41,11 +49,21 @@ public class DetailActivity extends AppCompatActivity {
 
         linkTextView.setText(link);
         linkTextView.setMovementMethod(LinkMovementMethod.getInstance());
-        linkTextView.setOnClickListener(new View.OnClickListener() {
+        linkTextView.setOnClickListener(v -> {
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
+            startActivity(browserIntent);
+        });
+
+        favoriteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
-                startActivity(browserIntent);
+                RssItem item = new RssItem();
+                item.setTitle(title.getText().toString());
+                item.setDescription(description.getText().toString());
+                item.setPubDate(pubDate.getText().toString());
+                item.setLink(link);
+                dbHelper.addFavorite(item);
+                Toast.makeText(DetailActivity.this, "Added to favorites", Toast.LENGTH_SHORT).show();
             }
         });
 
