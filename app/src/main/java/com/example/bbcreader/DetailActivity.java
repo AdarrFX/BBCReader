@@ -34,7 +34,12 @@ public class DetailActivity extends BaseActivity {
         title.setText(intent.getStringExtra("title"));
         description.setText(intent.getStringExtra("description"));
         pubDate.setText(intent.getStringExtra("pubDate"));
-        final String link = intent.getStringExtra("link");
+        String link = intent.getStringExtra("link");
+        boolean fromFavorites = intent.getBooleanExtra("from_favorites", false);
+
+        if (fromFavorites) {
+            favoriteButton.setVisibility(View.GONE);
+        }
 
         linkButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,17 +59,16 @@ public class DetailActivity extends BaseActivity {
             startActivity(browserIntent);
         });
 
-        favoriteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                RssItem item = new RssItem();
-                item.setTitle(title.getText().toString());
-                item.setDescription(description.getText().toString());
-                item.setPubDate(pubDate.getText().toString());
-                item.setLink(link);
-                dbHelper.addFavorite(item);
-                Toast.makeText(DetailActivity.this, "Added to favorites", Toast.LENGTH_SHORT).show();
-            }
+        favoriteButton.setOnClickListener(v -> {
+            RssItem item = new RssItem();
+            item.setTitle(title.getText().toString());
+            item.setDescription(description.getText().toString());
+            item.setPubDate(pubDate.getText().toString());
+            item.setLink(link);
+            dbHelper.addFavorite(item);
+            favoriteButton.setEnabled(false); // Disable the button
+            favoriteButton.setText(R.string.favourited);
+            Toast.makeText(DetailActivity.this, "Added to favorites", Toast.LENGTH_SHORT).show();
         });
 
     }

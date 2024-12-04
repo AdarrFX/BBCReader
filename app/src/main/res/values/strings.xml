@@ -9,6 +9,13 @@
     <string name="navigation_drawer_close">Close</string>
     <string name="article_fav_button">Favourite ⭐️</string>
     <string name="link_button">Read Full Article️</string>
+    <string name="del_confirm">Delete Message?️</string>
+    <string name="favourited">Favourited ❤️</string>
+    <string name="addedToFavs">Added to Favourites!</string>
+    <string name="navHeaderTitle">BBC News Reader</string>
+    <string name="favMenuToolbarText">⭐ Favourites Menu ⭐</string>
+
+
 
 
     <string name="lorem_ipsum">
