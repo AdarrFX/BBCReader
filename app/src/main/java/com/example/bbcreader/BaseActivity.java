@@ -3,6 +3,7 @@ package com.example.bbcreader;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -14,7 +15,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 
-public class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity {
 
     ListView listView;
     RssAdapter adapter;
@@ -28,6 +29,11 @@ public class BaseActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(true);
+        getSupportActionBar().setTitle(R.id.favoritesListView);
+
+        ImageButton helpButton = toolbar.findViewById(R.id.help_button);
+        helpButton.setOnClickListener(v -> showHelpDialog());
 
         drawerLayout = findViewById(R.id.drawer_layout);
         toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -54,6 +60,8 @@ public class BaseActivity extends AppCompatActivity {
         });
     }
 
+    protected abstract void showHelpDialog();
+
     @Override
     public void onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -62,6 +70,7 @@ public class BaseActivity extends AppCompatActivity {
             super.onBackPressed();
         }
     }
+
 
 
 

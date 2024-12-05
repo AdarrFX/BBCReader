@@ -14,8 +14,8 @@
     <string name="addedToFavs">Added to Favourites!</string>
     <string name="navHeaderTitle">BBC News Reader</string>
     <string name="favMenuToolbarText">⭐ Favourites Menu ⭐</string>
-
-
+    <string name="mainMenuToolbarText">📰 Latest News 📰</string>
+    <string name="detailMenuToolbarText"> Article Details </string>
 
 
     <string name="lorem_ipsum">

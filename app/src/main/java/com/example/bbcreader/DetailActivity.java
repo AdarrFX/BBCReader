@@ -3,8 +3,7 @@ package com.example.bbcreader;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
-
+import androidx.appcompat.app.AlertDialog;
 import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.widget.Button;
@@ -36,6 +35,9 @@ public class DetailActivity extends BaseActivity {
         pubDate.setText(intent.getStringExtra("pubDate"));
         String link = intent.getStringExtra("link");
         boolean fromFavorites = intent.getBooleanExtra("from_favorites", false);
+
+        TextView titleText = findViewById(R.id.section_title);
+        titleText.setText(R.string.detailMenuToolbarText);
 
         if (fromFavorites) {
             favoriteButton.setVisibility(View.GONE);
@@ -72,4 +74,13 @@ public class DetailActivity extends BaseActivity {
         });
 
     }
+
+    @Override
+    protected void showHelpDialog() {
+        new AlertDialog.Builder(this).setTitle("Help").setMessage("Tap the link or the button to" +
+                        "go to the article mentioned. Press the favourite button to favourite the article" +
+                        "to save to look at later.")
+                .setPositiveButton(android.R.string.ok, null).show();
+    }
+
 }

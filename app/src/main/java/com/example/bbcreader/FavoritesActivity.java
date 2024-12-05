@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 
@@ -38,8 +40,9 @@ public class FavoritesActivity extends BaseActivity {
         favoriteList = new ArrayList<>();
         favoriteIds = new ArrayList<>();
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        getSupportActionBar().setTitle(R.string.favMenuToolbarText);
+        TextView titleText = findViewById(R.id.section_title);
+
+        titleText.setText(R.string.favMenuToolbarText);
 
         loadFavorites();
 
@@ -141,6 +144,14 @@ public class FavoritesActivity extends BaseActivity {
             }
         });
         snackbar.show();
+    }
+
+    @Override
+    protected void showHelpDialog() {
+        new AlertDialog.Builder(this).setTitle("Help").setMessage("This is your article favourites list." +
+                        "From here, you can go to and tap any article to view it. Press and hold on a favourite" +
+                        "to delete it.")
+                .setPositiveButton(android.R.string.ok, null).show();
     }
 
 }
