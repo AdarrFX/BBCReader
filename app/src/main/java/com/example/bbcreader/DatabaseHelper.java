@@ -24,6 +24,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
+    // Create the table if it doesn't already exist
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createTable = "CREATE TABLE " + TABLE_NAME + " (" +
@@ -35,12 +36,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(createTable);
     }
 
+    // I doubt we'll ever need to upgrade, but here it is just in case.
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
     }
 
+    // Insert the values from the favourite into a new row
     public boolean addFavorite(RssItem item) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();

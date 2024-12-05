@@ -77,6 +77,7 @@ public class FavoritesActivity extends BaseActivity {
         });
 
 
+        // On Long press, bring up an alertdialog with options to delete the article from favourites
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             @SuppressLint("Range")
@@ -89,6 +90,7 @@ public class FavoritesActivity extends BaseActivity {
                         recentlyDeletedItemPosition = position;
                         recentlyDeletedItemId = favoriteIds.get(position);
 
+                        // Save the recently deleted item to re-add if we undo it
                         Cursor cursor = dbHelper.getAllFavorites();
                         if (cursor.moveToPosition(position)) {
                             recentlyDeletedItem = new RssItem();
@@ -134,6 +136,7 @@ public class FavoritesActivity extends BaseActivity {
         listView.setAdapter(adapter);
     }
 
+    // This re-adds a deleted item to the database if we press undo on the snackbar.
     private void showUndoSnackbar() {
         Snackbar snackbar = Snackbar.make(findViewById(R.id.drawer_layout), "Item deleted", Snackbar.LENGTH_LONG);
         snackbar.setAction("UNDO", new View.OnClickListener() {

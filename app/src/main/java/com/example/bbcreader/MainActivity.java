@@ -23,11 +23,13 @@ public class MainActivity extends BaseActivity {
         adapter = new RssAdapter(this, new ArrayList<>());
         listView.setAdapter(adapter);
 
+        // Set the title for the section. Each activity takes care of it's own title.
         TextView titleText = findViewById(R.id.section_title);
         titleText.setText(R.string.mainMenuToolbarText);
 
         new FetchFeedTask(adapter).execute();
 
+        // Pass the RSS item details to the detail Activity
         listView.setOnItemClickListener((parent, view, position, id) -> {
             RssItem item = adapter.getItem(position);
             Intent intent = new Intent(MainActivity.this, DetailActivity.class);
