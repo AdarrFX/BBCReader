@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">LecteurBBC</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">Premier Fragment</string>
+    <string name="second_fragment_label">Deuxième Fragment</string>
+    <string name="next">Suivant</string>
+    <string name="previous">Précédent</string>
+    <string name="navigation_drawer_open">Ouvrir</string>
+    <string name="navigation_drawer_close">Fermer</string>
+    <string name="article_fav_button">Favori ⭐️</string>
+    <string name="link_button">Lire l\'article complet</string>
+    <string name="del_confirm">Supprimer le message?️</string>
+    <string name="favourited">Favori ❤️</string>
+    <string name="addedToFavs">Ajouté aux favoris!</string>
+    <string name="navHeaderTitle">Lecteur de Nouvelles BBC</string>
+    <string name="favMenuToolbarText">⭐ Menu des Favoris ⭐</string>
+    <string name="mainMenuToolbarText">📰 Dernières Nouvelles BBC 📰</string>
+    <string name="detailMenuToolbarText">Détails de l\'article</string>
+    <string name="aboutTitle">À propos de moi</string>
+    <string name="entertext">Entrer le texte</string>
+    <string name="submit">Soumettre</string>
+    <string name="HomeText">Accueil</string>
+    <string name="FavouriteText">Favoris</string>
+    <string name="AboutText">À propos de moi</string>
+    <string name="MainHelp">Ceci est la vue principale. Les articles les plus récents sont affichés ci-dessous. Appuyez sur un article pour voir les détails.</string>
+    <string name="DetailHelp">Appuyez sur le lien ou le bouton pour accéder à l\'article mentionné. À moins que vous ne regardiez déjà un favori, appuyez sur le bouton favori pour ajouter l\'article aux favoris afin de le consulter plus tard.</string>
+    <string name="FavouritesHelp">Voici votre liste de favoris d\'articles. D\'ici, vous pouvez aller et appuyer sur n\'importe quel article pour le consulter. Appuyez longuement sur un favori pour le supprimer.</string>
+    <string name="AboutHelp">Ceci est la page à propos. Vous pouvez enregistrer un message ici, qui est sauvegardé à l\'aide des SharedPreferences d\'Android. Amusez-vous bien!</string>
+
+    <string name="lorem_ipsum">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
+        volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
+        dui nec risus. Maecenas non sodales nisi
+    </string>
+</resources>
+

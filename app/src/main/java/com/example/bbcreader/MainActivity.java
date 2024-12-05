@@ -42,8 +42,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void showHelpDialog() {
-        new AlertDialog.Builder(this).setTitle("Help").setMessage("This is the main view." +
-                        " The newest articles are pictured below. Tap an article to view the details.")
+        new AlertDialog.Builder(this).setTitle("Help").setMessage(R.string.MainHelp)
                 .setPositiveButton(android.R.string.ok, null).show();
     }
 

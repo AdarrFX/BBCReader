@@ -77,9 +77,7 @@ public class DetailActivity extends BaseActivity {
 
     @Override
     protected void showHelpDialog() {
-        new AlertDialog.Builder(this).setTitle("Help").setMessage("Tap the link or the button to" +
-                        "go to the article mentioned. Press the favourite button to favourite the article" +
-                        "to save to look at later.")
+        new AlertDialog.Builder(this).setTitle("Help").setMessage(R.string.DetailHelp)
                 .setPositiveButton(android.R.string.ok, null).show();
     }
 

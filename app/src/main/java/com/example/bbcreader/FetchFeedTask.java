@@ -15,6 +15,7 @@ public class FetchFeedTask extends AsyncTask<Void, Void, List<RssItem>> {
     private static final String RSS_URL = "https://feeds.bbci.co.uk/news/world/us_and_canada/rss.xml";
     private RssAdapter adapter;
 
+    // Setting up the RSS Adapter
     public FetchFeedTask(RssAdapter adapter) {
         this.adapter = adapter;
     }
@@ -27,8 +28,11 @@ public class FetchFeedTask extends AsyncTask<Void, Void, List<RssItem>> {
             // With help from:
             // https://developer.android.com/develop/connectivity/network-ops/xml
 
+            //Create a new URL and open the connection to the BBC
             URL url = new URL(RSS_URL);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+
+            //Initialize the InputStream to read and XML parser
             InputStream inputStream = connection.getInputStream();
             XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
             XmlPullParser parser = factory.newPullParser();
@@ -44,6 +48,10 @@ public class FetchFeedTask extends AsyncTask<Void, Void, List<RssItem>> {
                 switch (eventType) {
                     case XmlPullParser.START_TAG:
                         tagName = parser.getName();
+
+                        //Look for <item>, which contains each article
+                        // If found, create a new RSSItem to store the info
+
                         if (tagName.equals("item")) {
                             currentItem = new RssItem();
                         } else if (currentItem != null) {
@@ -60,6 +68,7 @@ public class FetchFeedTask extends AsyncTask<Void, Void, List<RssItem>> {
                         break;
                     case XmlPullParser.END_TAG:
                         tagName = parser.getName();
+                        // Once the tag is at the end, add the item to the article list.
                         if (tagName.equals("item") && currentItem != null) {
                             items.add(currentItem);
                         }

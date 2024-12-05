@@ -17,6 +17,9 @@ import com.google.android.material.navigation.NavigationView;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
+    // The Base activity contains the toolbar and navigation drawer
+    // All other activities are extended from this one so they also have the same components
+
     ListView listView;
     RssAdapter adapter;
     DrawerLayout drawerLayout;
@@ -32,6 +35,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         getSupportActionBar().setTitle(R.id.favoritesListView);
 
+        // Adding the help button and setting it to be clickable
+        // It will access overridden methods in each activity that will build an alertdialog
+        // And display it
         ImageButton helpButton = toolbar.findViewById(R.id.help_button);
         helpButton.setOnClickListener(v -> showHelpDialog());
 
@@ -40,6 +46,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
+        // Setup the Navigation View
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -52,7 +59,8 @@ public abstract class BaseActivity extends AppCompatActivity {
                     // Handle favorites action
                     Intent intent = new Intent(BaseActivity.this, FavoritesActivity.class); startActivity(intent);
                 } else if (id == R.id.nav_help) {
-                    // Handle settings action
+                    // Handle About action
+                    Intent intent = new Intent(BaseActivity.this, AboutActivity.class); startActivity(intent);
                 }
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
@@ -60,6 +68,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         });
     }
 
+    // The overridable abstract function for other activities to implement
     protected abstract void showHelpDialog();
 
     @Override

@@ -14,6 +14,8 @@ public class RssAdapter extends ArrayAdapter<RssItem> {
         super(context, 0, items);
     }
 
+    //This allows the listview to be populated with the news articles.
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {

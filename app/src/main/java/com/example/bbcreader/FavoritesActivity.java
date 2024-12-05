@@ -148,9 +148,7 @@ public class FavoritesActivity extends BaseActivity {
 
     @Override
     protected void showHelpDialog() {
-        new AlertDialog.Builder(this).setTitle("Help").setMessage("This is your article favourites list." +
-                        "From here, you can go to and tap any article to view it. Press and hold on a favourite" +
-                        "to delete it.")
+        new AlertDialog.Builder(this).setTitle("Help").setMessage(R.string.FavouritesHelp)
                 .setPositiveButton(android.R.string.ok, null).show();
     }
 

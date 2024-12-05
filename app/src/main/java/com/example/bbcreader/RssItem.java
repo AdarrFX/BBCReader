@@ -2,19 +2,15 @@ package com.example.bbcreader;
 
 public class RssItem {
 
+    // The RSSItem class holds the article information.
+
     private String title;
     private String description;
     private String pubDate;
     private String link;
 
-    // Constructor for initialization
-//    RssItem(String title, String description, String pubDate, String link) {
-//        this.title = title;
-//        this.description = description;
-//        this.pubDate = pubDate;
-//        this.link = link;
-//    }
 
+    // public getters and setters used to set and read the data from the object.
     public String getTitle() {
         return title;
     }
